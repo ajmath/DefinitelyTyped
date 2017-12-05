@@ -13,7 +13,7 @@ export interface RouteOptionsValidate {
      * An optional object with error fields copied into every validation error response.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsvalidateerrorfields)
      */
-    errorFields?: any;
+    errorFields?: object;
 
     /**
      * Default value: 'error' (return a Bad Request (400) error response).
@@ -34,7 +34,7 @@ export interface RouteOptionsValidate {
      * Note that all header field names must be in lowercase to match the headers normalized by node.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsvalidateheaders)
      */
-    headers?: boolean | ValidationOptions | ((value: any, option: any) => Function);
+    headers?: boolean | ValidationOptions | ((value: object, option: object) => Function);
 
     /**
      * Default value: none.
@@ -45,7 +45,7 @@ export interface RouteOptionsValidate {
      * If the validation rules for headers, params, query, and payload are defined at both the server routes level and at the route level, the individual route settings override the routes defaults (the rules are not merged).
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsvalidateparams)
      */
-    options?: ValidationOptions | Object; // TODO need review
+    options?: ValidationOptions | object; // TODO need review
 
     /**
      * Default value: true (no validation).
@@ -59,7 +59,7 @@ export interface RouteOptionsValidate {
      * Note that failing to match the validation rules to the route path parameters definition will cause all requests to fail.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsvalidateparams)
      */
-    params?: boolean | ValidationOptions | ((value: any, option: any) => Function); // TODO need review
+    params?: boolean | ValidationOptions | ((value: object, option: object) => Function); // TODO need review
 
     /**
      * Default value: true (no validation).
@@ -73,7 +73,7 @@ export interface RouteOptionsValidate {
      * Note that validating large payloads and modifying them will cause memory duplication of the payload (since the original is kept), as well as the significant performance cost of validating large amounts of data.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsvalidatepayload)
      */
-    payload?: boolean | ValidationOptions | ((value: any, option: any) => Function); // TODO need review
+    payload?: boolean | ValidationOptions | ((value: object, option: object) => Function); // TODO need review
 
     /**
      * Default value: true (no validation).
@@ -87,6 +87,6 @@ export interface RouteOptionsValidate {
      * Note that changes to the query parameters will not be reflected in request.url.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsvalidatequery)
      */
-    query?: boolean | ValidationOptions | ((value: any, option: any) => Function); // TODO need review
+    query?: boolean | ValidationOptions | ((value: object, option: object) => Function); // TODO need review
 
 }

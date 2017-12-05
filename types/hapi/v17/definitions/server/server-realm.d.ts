@@ -16,11 +16,11 @@ export interface ServerRealm {
         }
     };
     /** the realm of the parent server object, or null for the root server. */
-    parent: any | null;
+    parent: object | null;
     /** the active plugin name (empty string if at the server root). */
     plugin: string;
     /** the plugin options object passed at registration. */
-    pluginOptions: any;  // OptionsPassedToPlugin;
+    pluginOptions: object;
     /** plugin-specific state to be shared only among activities sharing the same active state. plugins is an object where each key is a plugin name and the value is the plugin state. */
     plugins: PluginsStates;
     /** settings overrides */
@@ -28,6 +28,6 @@ export interface ServerRealm {
         files: {
             relativeTo: string;
         };
-        bind: any;
+        bind: object;
     };
 }

@@ -15,16 +15,16 @@ import * as Podium from "podium";
  * TODO I think it's not very elegant solution
  */
 export type ReplyValue = _ReplyValue | Promise<_ReplyValue>;
-export type _ReplyValue = null | undefined | string | number | boolean | Buffer | Error | stream.Stream | Object; // | array;
+export type _ReplyValue = null | undefined | string | number | boolean | Buffer | Error | stream.Stream | object; // | array;
 
 /**
  * An object containing the values of params, query, and payload before any validation modifications made. Only set when input validation is performed.
  * For context [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-requestorig)
  */
 export interface RequestOrig {
-    params: any;
-    query: any;
-    payload: any;
+    params: object;
+    query: object;
+    payload: object;
 }
 
 /**
@@ -38,7 +38,7 @@ export interface Request extends Podium {
      * Application-specific state. Provides a safe place to store application data without potential conflicts with the framework. Should not be used by plugins which should use plugins[name].
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-requestapp)
      */
-    app: any;
+    app: object;
 
     /**
      * Authentication information:
@@ -91,7 +91,7 @@ export interface Request extends Podium {
      * An array containing the logged request events.
      * Note that this array will be empty if route log.collect is set to false.
      */
-    readonly logs: any[];
+    readonly logs: object[];
 
     /**
      * The request method in lower case (e.g. 'get', 'post').
@@ -127,7 +127,7 @@ export interface Request extends Podium {
      * The request payload based on the route payload.output and payload.parse settings.
      * TODO check this typing and add references / links.
      */
-    readonly payload: stream.Readable | Buffer | any;
+    readonly payload: stream.Readable | Buffer | object;
 
     /**
      * Plugin-specific state. Provides a place to store and pass request-level plugin data. The plugins is an object where each key is a plugin name and the value is the state.
@@ -137,7 +137,7 @@ export interface Request extends Podium {
     /**
      * An object where each key is the name assigned by a route pre-handler methods function. The values are the raw values provided to the continuation function as argument. For the wrapped response object, use responses.
      */
-    readonly pre: Object;
+    readonly pre: Util.Dictionary<object>;
 
     /**
      * Access: read / write (see limitations below).
@@ -148,12 +148,12 @@ export interface Request extends Podium {
     /**
      * Same as pre but represented as the response object created by the pre method.
      */
-    readonly preResponses: Object;
+    readonly preResponses: Util.Dictionary<object>;
 
     /**
      * By default the object outputted from node's URL parse() method. Might also be set indirectly via request.setUrl in which case it may be a string (if url is set to an object with the query attribute as an unparsed string).
      */
-    readonly query: any;
+    readonly query: object;
 
     /**
      * An object containing the Node HTTP server objects. Direct interaction with these raw objects is not recommended.
@@ -186,7 +186,7 @@ export interface Request extends Podium {
     /**
      * An object containing parsed HTTP state information (cookies) where each key is the cookie name and value is the matching cookie content after processing using any registered cookie definition.
      */
-    readonly state: Util.Dictionary<any>;
+    readonly state: Util.Dictionary<object>;
 
     /**
      * The parsed request URI.
@@ -198,9 +198,9 @@ export interface Request extends Podium {
      * @param source - the value to set as the source of the reply interface, optional.
      * @param options - options for the method, optional.
      * @return ResponseObject
-     * [See docs](https://hapijs.com/api/17.0.1#request.generateResponse())
+     * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-requestgenerateresponsesource-options)
      */
-    generateResponse(source?: ReplyValue, options?: {marshal?: any; prepare?: any; close?: any; variety?: any}): ResponseObject;
+    generateResponse(source?: ReplyValue, options?: {variety?: string; prepare?: Function; marshal?: Function; close?: Function; }): ResponseObject;
 
     /**
      * Logs request-specific events. When called, the server emits a 'request' event which can be used by other listeners or plugins. The arguments are:
@@ -210,7 +210,7 @@ export interface Request extends Podium {
      * @return void
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-requestlogtags-data)
      */
-    log(tags: string | string[], data?: string | Object | (() => string | Object)): void;
+    log(tags: string | string[], data?: string | object | (() => string | object)): void;
 
     /**
      * Validates a request against the route's authentication access configuration, where:

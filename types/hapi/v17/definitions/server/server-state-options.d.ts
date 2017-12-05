@@ -43,13 +43,13 @@ export interface ServerStateCookieOptions {
      *  * password - password used for HMAC key generation (must be at least 32 characters long).
      */
     sign?: {
-        integrity?: any;  // TODO make iron definitions and getting typing from iron
+        integrity?: object;  // TODO make iron definitions and getting typing from iron. Needs review!
         password: string;
     };
     /** password used for 'iron' encoding (must be at least 32 characters long). */
     password?: string;
     /** options for 'iron' encoding. Defaults to require('iron').defaults. */
-    iron?: any;  // TODO make iron definitions and getting typing from iron
+    iron?: object;  // TODO make iron definitions and getting typing from iron. Needs review!
     /** if true, errors are ignored and treated as missing cookies. */
     ignoreErrors?: boolean;
     /** if true, automatically instruct the client to remove invalid cookies. Defaults to false. */
@@ -57,5 +57,5 @@ export interface ServerStateCookieOptions {
     /** if false, allows any cookie value including values in violation of RFC 6265. Defaults to true. */
     strictHeader?: boolean;
     /** used by proxy plugins (e.g. h2o2). */
-    passThrough?: any;
+    passThrough?: object; // TODO Needs review!
 }

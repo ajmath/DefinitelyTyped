@@ -66,7 +66,7 @@ export class Server extends Podium {
      * Initialized with an empty object.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverapp)
      */
-    app?: any;
+    app?: object;
 
     /**
      * Server Auth: properties and methods
@@ -121,8 +121,8 @@ export class Server extends Podium {
          * Note that events must be registered before they can be emitted or subscribed to by calling server.event(events). This is done to detect event name misspelling and invalid event activities.
          * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-await-servereventsemitcriteria-data)
          */
-        emit(criteria: string, data: any): void;
-        emit(criteria: {name: string, channel?: string, tags?: string | string[]}, data: any): void;
+        emit(criteria: string, data: any): void; // TODO can one "object" type be a function? If yes, I can change any to object.
+        emit(criteria: {name: string, channel?: string, tags?: string | string[]}, data: any): void; // TODO can one "object" type be a function? If yes, I can change any to object.
 
         /**
          * Subscribe to an event where:
@@ -167,9 +167,9 @@ export class Server extends Podium {
          * @return Return value: a promise that resolves when the event is emitted.
          * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-await-servereventsoncecriteria)
          */
-        once(criteria: string): any;
-        once(criteria: ServerEventsApplicationObject): any;
-        once(criteria: ServerEventCriteria): any;
+        once(criteria: string): any; // TODO can one "object" type be Promise? If yes, I can change any to object.
+        once(criteria: ServerEventsApplicationObject): any; // TODO can one "object" type be Promise? If yes, I can change any to object.
+        once(criteria: ServerEventCriteria): any; // TODO can one "object" type be Promise? If yes, I can change any to object.
 
         /**
          * The follow method is only mentioned in Hapi API. The doc about that method can be found [here](https://github.com/hapijs/podium/blob/master/API.md#podiumremovelistenername-listener)
@@ -251,7 +251,7 @@ export class Server extends Podium {
      * the server.plugins[name] object directly or via the server.expose() method.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverplugins)
      */
-    plugins: any;
+    plugins: object;
 
     /**
      * The realm object contains sandboxed server settings specific to each plugin or authentication strategy. When
@@ -307,7 +307,7 @@ export class Server extends Podium {
      * When setting a context inside a plugin, the context is applied only to methods set up by the plugin. Note that the context applies only to routes and extensions added after it has been set. Ignored if the method being bound is an arrow function.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverbindcontext)
      */
-    bind(context: any): void;
+    bind(context: object): void;
 
     /**
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servercacheoptions)
@@ -411,7 +411,7 @@ export class Server extends Podium {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverexposekey-value)
      */
-    expose(key: string, value: any): void;
+    expose(key: string, value: any): void; // TODO can I change the any to object type here?
 
     /**
      * Merges an object into to the existing content of server.plugins[name] where:
@@ -422,7 +422,7 @@ export class Server extends Podium {
      * objects. Instead favor server.expose(key, value), which only copies a reference to value.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverexposeobj)
      */
-    expose(obj: Object): void;
+    expose(obj: object): void;
 
     /**
      * Registers an extension function in one of the request lifecycle extension points where:
@@ -515,7 +515,7 @@ export class Server extends Podium {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverlogtags-data-timestamp)
      */
-    log(tags: string | string[], data?: string | Object | (() => Function), timestamp?: number): void;
+    log(tags: string | string[], data?: string | object | (() => Function), timestamp?: number): void;
 
     /**
      * Looks up a route configuration where:
@@ -630,8 +630,8 @@ export class Server extends Podium {
      * @return void
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverrulesprocessor-options)
      */
-    rules(processor: (rules: any, info: {method: string, path: string, vhost?: string}) => Function): void;
-    rules(processor: (rules: any, info: {method: string, path: string, vhost?: string}) => Function, options: {validate: any}): void; // TODO needs implementation
+    rules(processor: (rules: object, info: {method: string, path: string, vhost?: string}) => Function): void;
+    rules(processor: (rules: object, info: {method: string, path: string, vhost?: string}) => Function, options: {validate: object}): void; // TODO needs implementation
 
     /**
      * Starts the server by listening for incoming requests on the configured port (unless the connection was configured with autoListen set to false).

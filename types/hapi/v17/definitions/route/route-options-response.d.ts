@@ -69,7 +69,7 @@ export interface RouteOptionsResponse {
      * * * if the function returns a value and modify is true, the value is used as the new response. If the original response is an error, the return value is used to override the original error output.payload. If an error is thrown, the error is processed according to failAction.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsresponseschema)
      */
-    schema?: boolean | ValidationOptions | ((value: any, options: any) => Function); // TODO it must be better
+    schema?: boolean | ValidationOptions | ((value: object, options: object) => Function); // TODO it must be better
 
     /**
      * Default value: none.
@@ -77,6 +77,6 @@ export interface RouteOptionsResponse {
      * status is set to an object where each key is a 3 digit HTTP status code and the value has the same definition as schema.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsresponsestatus)
      */
-    status?: Util.Dictionary<any>; // TODO it must be better
+    status?: Util.Dictionary<object>; // TODO it must be better
 
 }

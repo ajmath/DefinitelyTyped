@@ -20,6 +20,6 @@ export interface ServerOptionsCache extends Catbox.PolicyOptions {
     partition?: string;
 
     /** other options passed to the catbox strategy used. Other options are only passed to catbox when engine above is a class or function and ignored if engine is a catbox engine object). */
-    [s: string]: any;
+    [s: string]: any; // TODO I can't change this any type to object type. When I tried I received some errors from Catbox: TS2411:Property 'dropOnError' of type 'boolean' is not assignable to string index type 'object'
 
 }

@@ -27,7 +27,7 @@ export interface ServerAuth {
      * returned from its implementation function.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverauthapi)
      */
-    api: Util.Dictionary<any>;
+    api: Util.Dictionary<object>;
 
     /**
      * Contains the default authentication configuration is a default strategy was set via
@@ -77,7 +77,7 @@ export interface ServerAuth {
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverauthstrategyname-scheme-options)
      */
     strategy(name: string, scheme: string): void;
-    strategy(name: string, scheme: string, options: any): void;
+    strategy(name: string, scheme: string, options: object): void;
 
     /**
      * Tests a request against an authentication strategy where:
