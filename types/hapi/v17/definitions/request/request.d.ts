@@ -9,6 +9,7 @@ import {RequestRoute} from "./request-route";
 import {RequestAuth} from "./request-auth";
 import {RequestInfo} from "./request-info";
 import * as Podium from "podium";
+import {RequestEvents} from "hapi";
 
 /**
  * An object containing the values of params, query, and payload before any validation modifications made. Only set when input validation is performed.
@@ -54,7 +55,7 @@ export interface Request extends Podium {
      * * 'disconnect' - emitted when a request errors or aborts unexpectedly.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-requestevents)
      */
-    events: 'peek' | 'finish' | 'disconnect'; // TODO I think it's wrong. Maybe is events.on(' ', ' '). It needs revision.
+    events: RequestEvents;
 
     /**
      * The raw request headers (references request.raw.req.headers).
