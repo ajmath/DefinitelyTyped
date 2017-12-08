@@ -34,7 +34,7 @@ export interface ServerState {
      * An object containing the configuration of each cookie added via [server.state()](https://github.com/hapijs/hapi/blob/master/API.md#server.state()) where each key is the
      * cookie name and value is the configuration object.
      */
-    readonly cookies: object; // TODO what the difference between this one and the settings above? This one should be an array?
+    readonly cookies: object;
 
     /**
      * An array containing the names of all configued cookies.

@@ -27,7 +27,7 @@ export interface ServerAuth {
      * returned from its implementation function.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverauthapi)
      */
-    api: Util.Dictionary<object>;
+    api: Util.Dictionary<any>;
 
     /**
      * Contains the default authentication configuration is a default strategy was set via

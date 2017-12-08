@@ -57,5 +57,5 @@ export interface ServerStateCookieOptions {
     /** if false, allows any cookie value including values in violation of RFC 6265. Defaults to true. */
     strictHeader?: boolean;
     /** used by proxy plugins (e.g. h2o2). */
-    passThrough?: object; // TODO Needs review!
+    passThrough?: any;
 }

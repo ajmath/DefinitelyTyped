@@ -411,7 +411,7 @@ export class Server extends Podium {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverexposekey-value)
      */
-    expose(key: string, value: any): void; // TODO can I change the any to object type here?
+    expose(key: string, value: any): void;
 
     /**
      * Merges an object into to the existing content of server.plugins[name] where:

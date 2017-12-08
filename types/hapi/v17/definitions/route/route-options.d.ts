@@ -93,8 +93,9 @@ export interface RouteOptions {
      * Default value: none.
      * Route-level request extension points by setting the option to an object with a key for each of the desired extension points ('onRequest' is not allowed), and the value is the same as the server.ext(events) event argument.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsext)
+     * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#request-lifecycle)
      */
-    ext?: object; //TODO need to review and rewrite this definition // I saw again and I keep not understanding.
+    ext?: object;
 
     /**
      * Default value: { relativeTo: '.' }.
@@ -114,7 +115,7 @@ export interface RouteOptions {
      * Note: handlers using a fat arrow style function cannot be bound to any bind property. Instead, the bound context is available under h.context.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionshandler)
      */
-    handler?: Lifecycle.Method | object; //TODO need to review
+    handler?: Lifecycle.Method | object;
 
     /**
      * Default value: none.

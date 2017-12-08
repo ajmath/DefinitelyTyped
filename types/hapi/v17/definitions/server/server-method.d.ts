@@ -8,8 +8,8 @@ import * as catbox from "catbox";
  * For reference [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servermethodname-method-options)
  */
 export interface ServerMethod {
-    // TODO I am not sure about change "any" to "object" in this case
-    (args: any[], flags: {ttl?: number}): any; // TODO it needs review. Look the doc: the first param is a ...args and the second is "flags". Typescript supports ...args only in the last param
+//    (args: any[], flags: {ttl?: number}): any;
+    (...args: any[]): any; // TODO it needs review. Look the doc: the first param is a ...args and the second is "flags". Typescript supports ...args only in the last param
 }
 
 /**

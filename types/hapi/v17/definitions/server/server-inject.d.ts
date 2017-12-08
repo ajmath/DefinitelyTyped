@@ -45,6 +45,6 @@ export interface ServerInjectOptions extends Shot.RequestOptions {
  * For context [Shot module](https://github.com/hapijs/shot)
  */
 export interface ServerInjectResponse extends Shot.ResponseObject {
-    result: object;
+    result: object | undefined;
     request: Request;
 }
